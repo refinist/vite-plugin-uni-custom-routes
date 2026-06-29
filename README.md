@@ -165,6 +165,8 @@ UniCustomRoutes({
 - 自动透传 query 与 hash：访问 `/pages/old-foo/old-foo?id=1` 会重定向到 `/foo?id=1`
 - 仅对显式列出的旧路径生效；若旧路径仍是某个真实页面，则不会覆盖其正常渲染
 
+> **不限于 uni-app 自家旧路径**：键是任意 URL 路径字符串，所以**从纯 H5 项目迁移到 uni-app** 时也能用 —— 把旧站点入口 URL（如 `/about-us`、`/old-promo/landing`）映射到新短路由即可，旧分享链接、SEO 收录不会 404。
+
 ## FAQ
 
 ### 短路由冲突会怎样？
