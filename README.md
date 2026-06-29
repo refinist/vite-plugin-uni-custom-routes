@@ -181,10 +181,10 @@ UniCustomRoutes({
 
 ### 如何调试当前的短路由映射？
 
-打开浏览器 console，在 `setupCustomRoutes()` 后输入：
+打开浏览器 console，在 `setupCustomRoutes()` 之后输入：
 
-```ts
-console.log((globalThis as any).__uniRoutes.map((r: any) => r?.path))
+```js
+__uniRoutes.map(r => r?.path)
 ```
 
 可以看到所有 route 当前的 path（短路由 / 长路径 / 重定向条目都在）。
