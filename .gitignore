@@ -9,3 +9,6 @@ lib-cov
 logs
 node_modules
 temp
+
+# uni-app 本地 IDE 配置（微信开发者工具等自动生成）
+**/project.private.config.json

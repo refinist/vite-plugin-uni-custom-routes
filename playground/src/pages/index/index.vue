@@ -1,9 +1,17 @@
 <script setup lang="ts">
+// #ifdef H5
 import { computed } from 'vue'
 
 const origin = computed(() =>
   typeof window === 'undefined' ? '' : window.location.origin,
 )
+
+function goLegacyAbout() {
+  // 业务代码（或站外旧分享链接里的指引代码）仍在用旧路径
+  // → 插件拦截器把它翻译到新短路由 /about
+  uni.navigateTo({ url: '/pages/legacy-about/legacy-about' })
+}
+// #endif
 
 function goAbout() {
   uni.navigateTo({ url: '/pages/about/about' })
@@ -13,11 +21,6 @@ function goDetail() {
 }
 function goMine() {
   uni.switchTab({ url: '/pages/mine/mine' })
-}
-function goLegacyAbout() {
-  // 业务代码（或站外旧分享链接里的指引代码）仍在用旧路径
-  // → 插件拦截器把它翻译到新短路由 /about
-  uni.navigateTo({ url: '/pages/legacy-about/legacy-about' })
 }
 </script>
 
@@ -40,7 +43,8 @@ function goLegacyAbout() {
       switchTab('/pages/mine/mine') → 地址栏 /mine
     </button>
 
-    <text class="section">旧路径过渡兼容（redirects）</text>
+    <!-- #ifdef H5 -->
+    <text class="section">旧路径过渡兼容（redirects，仅 H5）</text>
     <text class="desc">
       vite.config 里配置了
       <text class="code">'/pages/legacy-about/legacy-about' → '/about'</text>。
@@ -51,6 +55,7 @@ function goLegacyAbout() {
     <button @click="goLegacyAbout">
       navigateTo('/pages/legacy-about/legacy-about') → 地址栏 /about
     </button>
+    <!-- #endif -->
   </view>
 </template>
 
