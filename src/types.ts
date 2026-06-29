@@ -14,6 +14,7 @@ export interface UniCustomRoutesOptions {
 
   /**
    * 手动追加 / 覆盖短路由映射，键值会自动补全前导 `/`
+   * **优先级高于自动短化**：同 key 会直接覆盖自动生成的结果
    * 适合处理深层嵌套（如 pages/foo/bar/baz）或自动规则产生冲突的页面
    * @default {}
    */

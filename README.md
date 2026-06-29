@@ -86,6 +86,7 @@ interface UniCustomRoutesOptions {
 
   /**
    * 手动追加 / 覆盖短路由映射，键值会自动补全前导 `/`
+   * **优先级高于自动短化**：同 key 会直接覆盖自动生成的结果
    * 适合处理深层嵌套（如 pages/foo/bar/baz）或自动规则产生冲突的页面
    * @default {}
    */
@@ -174,7 +175,7 @@ UniCustomRoutes({
 
 ### 短路由冲突会怎样？
 
-末段同名时会冲突 —— 比如 `pages/foo/foo` 与 `pages/foo/index` 都短化为 `/foo`，或主包与分包里末段同名的页面都短化到同一路径。浏览器 console 会输出 warning，用 `manualRoutes` 显式区分即可。
+末段同名时会冲突 —— 比如 `pages/foo/foo` 与 `pages/foo/index` 都短化为 `/foo`，或主包与分包里末段同名的页面都短化到同一路径，又或 `manualRoutes` 把某页面映射到的目标恰好和另一页的自动短化结果撞上。浏览器 console 会输出 warning，用 `manualRoutes` 显式区分即可。
 
 > uni-app 默认的 `pages/xxx/xxx` 命名几乎不会触发；分包同名 / 混用 `index` / 自定义深层目录时才可能撞上。
 
