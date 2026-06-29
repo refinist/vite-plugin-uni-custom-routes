@@ -1,0 +1,73 @@
+{
+  "name": "vite-plugin-uni-custom-routes",
+  "type": "module",
+  "version": "0.0.0",
+  "packageManager": "pnpm@11.9.0",
+  "description": "Custom short routes for uni-app H5 pages",
+  "author": "REFINIST",
+  "license": "MIT",
+  "homepage": "https://github.com/refinist/vite-plugin-uni-custom-routes#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/refinist/vite-plugin-uni-custom-routes.git"
+  },
+  "bugs": "https://github.com/refinist/vite-plugin-uni-custom-routes/issues",
+  "keywords": [],
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./index.d.ts",
+        "default": "./dist/index.mjs"
+      },
+      "require": {
+        "types": "./index.d.ts",
+        "default": "./dist/index.cjs"
+      }
+    },
+    "./client": {
+      "types": "./client.d.ts"
+    }
+  },
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
+  "types": "./index.d.ts",
+  "files": [
+    "client.d.ts",
+    "dist",
+    "index.d.ts"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "build": "tsdown",
+    "build-post": "exit 0",
+    "dev": "tsdown --watch",
+    "debug": "tsdown --sourcemap",
+    "play:h5": "pnpm -C playground run dev:h5",
+    "build:h5": "pnpm -C playground run build:h5",
+    "prepublishOnly": "pnpm build",
+    "release": "bumpp",
+    "test": "vitest",
+    "test:coverage": "vitest run --coverage",
+    "lint": "eslint .",
+    "lint:fix": "pnpm lint --fix",
+    "typecheck": "tsc --noEmit"
+  },
+  "peerDependencies": {
+    "vite": "^5.0.0"
+  },
+  "devDependencies": {
+    "@antfu/eslint-config": "catalog:",
+    "@types/node": "catalog:",
+    "@vitest/coverage-v8": "catalog:",
+    "bumpp": "catalog:",
+    "eslint": "catalog:",
+    "rimraf": "catalog:",
+    "tsdown": "catalog:",
+    "typescript": "catalog:",
+    "vite": "catalog:",
+    "vitest": "catalog:"
+  }
+}
