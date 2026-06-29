@@ -12,7 +12,24 @@
     "url": "git+https://github.com/refinist/vite-plugin-uni-custom-routes.git"
   },
   "bugs": "https://github.com/refinist/vite-plugin-uni-custom-routes/issues",
-  "keywords": [],
+  "keywords": [
+    "vite",
+    "vite-plugin",
+    "uni-app",
+    "uniapp",
+    "h5",
+    "short-route",
+    "short-routes",
+    "custom-routes",
+    "url-rewrite",
+    "redirect",
+    "redirects",
+    "dcloudio",
+    "vue",
+    "vue3",
+    "短路由",
+    "自定义路由"
+  ],
   "sideEffects": false,
   "exports": {
     ".": {

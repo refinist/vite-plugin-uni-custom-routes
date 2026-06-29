@@ -1,6 +1,7 @@
 # vite-plugin-uni-custom-routes
 
-<a href="https://www.npmjs.com/package/vite-plugin-uni-custom-routes"><img src="https://img.shields.io/npm/v/vite-plugin-uni-custom-routes" alt="NPM version"></a>
+[![npm](https://img.shields.io/npm/v/vite-plugin-uni-custom-routes.svg?colorA=2b9939&colorB=ffffff)](https://npmjs.com/package/vite-plugin-uni-custom-routes) [![downloads/month](https://img.shields.io/npm/dm/vite-plugin-uni-custom-routes.svg?colorA=2b9939&colorB=ffffff)](https://npmjs.com/package/vite-plugin-uni-custom-routes) 
+
 
 为 uni-app **H5** 页面提供「自定义短路由」的 Vite 插件：把形如 `/pages/foo/foo` 的长路径在运行时改写成 `/foo` 这样的短路由，同时拦截 `navigateTo` 等导航 API，无需改动业务代码。
 
