@@ -6,11 +6,11 @@ on:
       - main
     paths-ignore:
       - '**.md'
-      - 'LICENSE'
-      - '.gitignore'
-      - '.editorconfig'
-      - '.nvmrc'
-      - '.node-version'
+      - LICENSE
+      - .gitignore
+      - .editorconfig
+      - .nvmrc
+      - .node-version
       - '.vscode/**'
       - '.github/ISSUE_TEMPLATE/**'
 
@@ -19,11 +19,11 @@ on:
       - main
     paths-ignore:
       - '**.md'
-      - 'LICENSE'
-      - '.gitignore'
-      - '.editorconfig'
-      - '.nvmrc'
-      - '.node-version'
+      - LICENSE
+      - .gitignore
+      - .editorconfig
+      - .nvmrc
+      - .node-version
       - '.vscode/**'
       - '.github/ISSUE_TEMPLATE/**'
 
