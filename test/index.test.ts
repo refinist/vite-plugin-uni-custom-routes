@@ -41,4 +41,37 @@ describe('vitePluginUniCustomRoutes', () => {
 
     expect(load('some-other-id')).toBeUndefined()
   })
+
+  it('非 H5 平台（如 mp-weixin）返回空实现，不夹带运行时', () => {
+    const original = process.env.UNI_PLATFORM
+    process.env.UNI_PLATFORM = 'mp-weixin'
+    try {
+      const plugin = VitePluginUniCustomRoutes({
+        manualRoutes: { '/pages/foo/foo': '/foo' },
+      }) as Plugin
+      const code = asFn(plugin.load)(RESOLVED_VIRTUAL_MODULE_ID)
+      expect(code).toBe('export function setupCustomRoutes() {}')
+      // 不应包含运行时数据 / 拦截器代码
+      expect(code).not.toContain('OPTIONS')
+      expect(code).not.toContain('addInterceptor')
+      expect(code).not.toContain('/pages/foo/foo')
+    }
+    finally {
+      process.env.UNI_PLATFORM = original
+    }
+  })
+
+  it('uNI_PLATFORM 未设置时 fallback 为完整运行时', () => {
+    const original = process.env.UNI_PLATFORM
+    delete process.env.UNI_PLATFORM
+    try {
+      const plugin = VitePluginUniCustomRoutes() as Plugin
+      const code = asFn(plugin.load)(RESOLVED_VIRTUAL_MODULE_ID) as string
+      expect(code).toContain('setupCustomRoutes')
+      expect(code).toContain('addInterceptor')
+    }
+    finally {
+      process.env.UNI_PLATFORM = original
+    }
+  })
 })

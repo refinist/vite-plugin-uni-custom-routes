@@ -173,7 +173,12 @@ UniCustomRoutes({
 
 ### 小程序端需要做什么吗？
 
-不需要。短路由是浏览器 URL 层面的优化，小程序没有"地址栏"概念，插件在小程序端会自动 no-op（`setupCustomRoutes()` 内部检测不到 `__uniRoutes` 就 early return，不影响任何 uni API 行为）。业务代码继续按 `/pages/xxx/xxx` 调用 uni API 即可，**同一份代码 H5 / 小程序两端都正常工作**。
+不需要。短路由是浏览器 URL 层面的优化，小程序没有"地址栏"概念。插件在**构建期**检测 `process.env.UNI_PLATFORM`：
+
+- H5 编译时 → 注入完整运行时
+- 小程序 / App 等编译时 → 注入**空实现** `export function setupCustomRoutes() {}`
+
+所以小程序产物几乎不夹带本插件代码（仅一个空函数），也不影响任何 uni API 行为。业务代码继续按 `/pages/xxx/xxx` 调用 uni API 即可，**同一份代码 H5 / 小程序两端都正常工作**。
 
 ### 支持 hash 模式吗？
 
