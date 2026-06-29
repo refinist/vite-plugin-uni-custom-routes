@@ -5,6 +5,8 @@
 
 为 uni-app **H5** 页面提供「自定义短路由」的 Vite 插件：把形如 `/pages/foo/foo` 的长路径在运行时改写成 `/foo` 这样的短路由，同时拦截 `navigateTo` 等导航 API，无需改动业务代码。
 
+> 类似 Taro 的 [`h5.router.customRoutes`](https://docs.taro.zone/docs/config-detail#h5routercustomroutes) —— uni-app 没有内置等价能力，本插件补上这一块。
+
 ## ✨ Features
 
 - ⚡️ **纯运行时** —— 不读 / 不解析 `pages.json`，直接基于 uni-app 编译产物 `__uniRoutes` 改写路由
